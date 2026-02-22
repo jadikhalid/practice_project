@@ -1,0 +1,19 @@
+# Dépendances (très lourd, on ne les push jamais)
+node_modules/
+
+# Variables d'environnement (contient tes mots de passe/clés API)
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dossiers de build (générés automatiquement)
+dist/
+build/
+
+# Fichiers spécifiques au système
+.DS_Store
+Thumbs.db
