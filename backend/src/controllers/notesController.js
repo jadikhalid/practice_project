@@ -1,12 +1,26 @@
 import Note from "../models/Note.js";
 
-export const getAllNotes = async (req, res) => {
+export const getAllNotes = async (_req, res) => {
   try {
     const notes = await Note.find();
-    res.status(200).json(notes);
+    res.status(200).json({ message: "Notes retrieved successfully", notes });
   } catch (error) {
     console.log("Error in getAllNotes", error);
     res.status(500).json({ message: "Error retrieving notes", error });
+  }
+};
+
+export const getNoteById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const note = await Note.findById(id);
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+    res.status(200).json({ message: "Note retrieved successfully", note });
+  } catch (error) {
+    console.log("Error in getNoteById", error);
+    res.status(500).json({ message: "Error retrieving note", error });
   }
 };
 
