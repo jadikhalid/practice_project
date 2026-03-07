@@ -11,7 +11,7 @@ const redis = new Redis({
 
 export const rateLimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(5, "1 m"),
+  limiter: Ratelimit.slidingWindow(10, "20 s"),
 });
 
 export const checkRateLimit = async (req, res, next) => {
